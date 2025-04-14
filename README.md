@@ -21,6 +21,5 @@ Este software es un sistema web en pruebas, inteligente de gestión de ventas de
 
 ## Configuración de la base de datos
 
----------------------
 
 > La ciencia de hoy, es la tecnología del mañana. — Edward Teller
