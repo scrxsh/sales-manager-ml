@@ -144,5 +144,9 @@ replay_pid*
 back-end/uploads/
 back-end/target/
 back-end/src/test
+<<<<<<< HEAD
 back-end/src/.idea
+=======
+
+>>>>>>> f16f3dbd73c5524a4d9cb39f9f6998a384ac06cb
 # End of https://www.toptal.com/developers/gitignore/api/java,intellij
