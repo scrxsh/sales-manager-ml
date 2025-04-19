@@ -1,5 +1,5 @@
 ## Sales Manager ML*
-Este software es un sistema web en pruebas, inteligente de gestión de ventas desarrollado para microempresas textiles en Chiquinquirá. Integra el seguimiento de ventas tradicional con análisis predictivo y machine learning, brindando soporte a la toma de decisiones y mejorando el rendimiento del negocio de microempresas. Creado por Will ZP y Miguel Sierral, expuesto en el trabajo de grado titulado "Software de Gestión de Ventas para microempresas textiles en el municipio de Chiquinquirá, con Análisis Predictivo y Machine Learning". 
+Este software es un sistema web en pruebas, inteligente de gestión de ventas desarrollado para microempresas textiles en Chiquinquirá. Integra el seguimiento de ventas tradicional con análisis predictivo y machine learning, brindando soporte a la toma de decisiones y mejorando el rendimiento del negocio de microempresas. Creado por Will ZP y Miguel Sierra, expuesto en el trabajo de grado titulado "Software de Gestión de Ventas para microempresas textiles en el municipio de Chiquinquirá, con Análisis Predictivo y Machine Learning". 
 
 ### Tecnologías expuestas
 - **Backend**: Framework Spring Boot junto al gestor de bases de datos - MYSQL 8.4.
