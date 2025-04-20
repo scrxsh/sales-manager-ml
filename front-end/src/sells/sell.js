@@ -85,17 +85,10 @@ function obtenerVentas(){
                 `
                 <tr class="odd:bg-white even:bg-gray-50 border-b dark:bg-gray-800">
                     <th scope="row" class="px-2 py-1 text-gray-900 dark:text-gray-50 whitespace-nowrap">V0${element.id}</th>
-<<<<<<< HEAD
                     <th scope="row" class="px-2 py-1 dark:text-gray-300">${element.cliente.nombre}</th>
                     <th scope="row" class="px-2 py-1 dark:text-gray-300">${element.empleado.nombre}</th>
                     <td class="px-2 py-1 dark:text-gray-200">${fechaVentaFixed}</td>
                     <td class="px-2 py-1 dark:text-gray-200">${valorFinalFixed}</td>
-=======
-                    <th scope="row" class="px-2 py-1" dark:text-gray-200>${element.cliente.nombre}</th>
-                    <th scope="row" class="px-2 py-1" dark:text-gray-200>${element.empleado.nombre}</th>
-                    <td class="px-2 py-1 dark:text-gray-300">${fechaVentaFixed}</td>
-                    <td class="px-2 py-1 dark:text-gray-300">${valorFinalFixed}</td>
->>>>>>> f16f3dbd73c5524a4d9cb39f9f6998a384ac06cb
                     <td class="px-2 py-1 -ml-5 flex space-x-2">
                         <i class="fa-solid fa-file-pdf text-yellow-600 dark:text-yellow-400 text-3xl cursor-pointer" onclick="obtenerFactura(${element.id})"></i>
                     </td>

@@ -3,7 +3,7 @@ template.innerHTML = `
     <style>
         .card {
             width: 315px;
-            height: 375px;
+            height: 385px;
             background: var(--color-light);
             border: 2px solid var(--color-dark);
             box-shadow: 4px 4px var(--color-dark);
@@ -53,7 +53,6 @@ template.innerHTML = `
         .color-size-container {
         display: flex;
         justify-content: space-between;
-        font-size: 0.2rem;
         color: #000;
         gap: 0.1rem;
         margin: -12px 0px;
@@ -63,6 +62,7 @@ template.innerHTML = `
         .color-size-container > * {
         flex: 1;
         color: var(--color-dark);
+        font-size: 10px;
         }
 
         .card-divider {

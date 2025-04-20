@@ -24,12 +24,12 @@ public class CargaArchivosService {
             byte[] bytes = file.getBytes();
             String nombreOriginal = Objects.requireNonNull(file.getOriginalFilename());
             String extension = nombreOriginal.substring(file.getOriginalFilename().lastIndexOf("."));
-            String encode = URLEncoder.encode(nombre, StandardCharsets.UTF_8) + extension;
-            encode = encode.replace("+", "_");
-            Path path = Paths.get(url + encode);
+
+            String encode = nombre.trim().replace(" ", "_").replaceAll("[^\\p{L}\\p{Nd}_\\-]", "");
+            Path path = Paths.get(url + encode + extension);
             Files.createDirectories(path.getParent());
             Files.write(path, bytes);
-            return encode;
+            return encode + extension;
         }
         return null;
     }

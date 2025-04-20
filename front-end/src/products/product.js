@@ -89,7 +89,7 @@ function obtenerProductos() {
                         `
                         <tr class="odd:bg-white even:bg-gray-50 border-b  dark:bg-gray-800 whitespace-nowrap">
                             <th scope="row" class="flex items-center px-5 py-2 text-gray-900 dark:text-gray-300">
-                                <img class="w-9 h-9 rounded-full" src="${element.imgPrenda}" alt="${element.nombre}">
+                                <img class="w-9 h-9 rounded-full object-contain" src="${element.imgPrenda}" alt="${element.nombre}">
                                 <div class="ps-1 whitespace-nowrap">
                                     <div class="text-base font-semibold">${element.nombre}</div>
                                     <div class="font-normal text-gray-500 dark:text-gray-300"><strong>Talla: </strong>${element.talla} | <strong>Ventas esperadas: </strong>${xSellsFixed}</div>

@@ -24,7 +24,7 @@ public class ProductoModel {
     private String imgPrenda;
     @Column(nullable = false, length = 45)
     private String nombre;
-    @Column(nullable = false, length = 10)
+    @Column(nullable = false, length = 45)
     private String color;
     @Column(length = 300)
     private String descripcion;
