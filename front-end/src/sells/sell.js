@@ -9,6 +9,26 @@ cargarCliente();
 cargarEmpleado();
 cargarProductos();
 
+function validacionFormulario() {
+    const selectCliente = document.querySelector("#selectCliente");
+    const selectEmpleado = document.querySelector("#selectEmpleado");
+    const productItems = document.querySelectorAll("[id^='producto-item-']");
+
+    if (selectCliente.value === "") {
+        alert("Por favor, seleccione un cliente.");
+    } else if (selectEmpleado.value === "") {
+        alert("Por favor, seleccione un empleado.");
+        
+    } else if (productItems.length === 0) {
+        alert("Por favor, agregue al menos un producto.");
+        
+    } else {
+        crearVenta();
+    }
+    
+}
+
+
 function cargarCliente(){
     const selectCliente = document.querySelector("#selectCliente");
     selectCliente.innerHTML = `<option value="">Seleccione un cliente</option>`
@@ -131,11 +151,11 @@ function obtenerFactura(id) {
 function crearVenta(){
     const selectCliente = document.querySelector("#selectCliente");
     const selectEmpleado = document.querySelector("#selectEmpleado");
-    
+    const productItems = document.querySelectorAll("[id^='producto-item-']");
+
     const idCliente = selectCliente.value;
     const idEmpleado = selectEmpleado.value;
-
-    const productItems = document.querySelectorAll("[id^='producto-item-']");
+    
     const detalles = []
 
     productItems.forEach(item => {
@@ -176,7 +196,6 @@ fetch("http://localhost:8080/api/ventas/crear", requestOptions)
         tBody.innerHTML +=
         `
         <tr class="odd:bg-white even:bg-gray-50 border-b dark:bg-gray-800">
-<<<<<<< HEAD
             <th scope="row" class="px-2 py-1 text-gray-900 dark:text-gray-50 whitespace-nowrap">V0${element.id}</th>
             <th scope="row" class="px-2 py-1" dark:text-gray-50>${element.cliente.nombre}</th>
             <th scope="row" class="px-2 py-1" dark:text-gray-50>${element.empleado.nombre}</th>
@@ -184,15 +203,6 @@ fetch("http://localhost:8080/api/ventas/crear", requestOptions)
             <td class="px-2 py-1 dark:text-gray-300">${valorFinalFixed}</td>
             <td class="px-2 py-1 -ml-5 flex space-x-2">
                 <i class="fa-solid fa-file-pdf text-yellow-600 dark:text-yellow-400 text-3xl cursor-pointer" onclick="obtenerFactura(${element.id})"></i>
-=======
-            <th scope="row" class="px-2 py-1 text-gray-900 whitespace-nowrap">${element.id}</th>
-            <th scope="row" class="px-2 py-1">${element.empleado.nombre}</th>
-            <td class="px-2 py-1">${element.cliente.nombre}</td>
-            <td class="px-2 py-1">${fechaVentaFixed}</td>
-            <td class="px-2 py-1">${valorFinalFixed}</td>
-            <td class="px-2 py-1 -ml-5 flex space-x-2">
-                <i class="fa-solid fa-file-pdf text-yellow-600 text-3xl cursor-pointer" onclick="obtenerFactura(${element.id})"></i>
->>>>>>> f16f3dbd73c5524a4d9cb39f9f6998a384ac06cb
             </td>
         </tr>
         `
@@ -215,6 +225,19 @@ function agregarProducto(){
     const productosContainer = document.querySelector("#productosContainer");
     const nuevoProducto = document.createElement("div");
     const tBodyInfoProductos = document.querySelector("#tBodyInfoProductos")
+    const tablaProductos = document.querySelector("#infoProductosVenta") 
+
+
+    if(!idProducto || !cantidad || cantidad <= 0){
+        infoVenta.textContent = "Por favor, seleccione un producto y una cantidad válida.";
+        infoVenta.classList.add('text-red-600');
+        tablaProductos.classList.add('hidden');
+        setTimeout(() => {
+            infoVenta.textContent = "";
+            infoVenta.classList.remove('text-red-600');
+        }, 3000);
+        return;
+    }
 
     nuevoProducto.id = "producto-item-" + (document.querySelectorAll("[id^='producto-item-']").length + 1);
 
@@ -248,12 +271,12 @@ function agregarProducto(){
             console.log(imgUrl)
             tBodyInfoProductos.innerHTML += 
             `
-            <tr class="bg-white border-b border-gray-200 hover:bg-gray-50 id="producto-row-${idProducto}">
+            <tr class="bg-white border-b border-gray-200 hover:bg-gray-50" id="producto-row-${idProducto}">
                 <td class="p-4"> <img src="${product.imgPrenda}" class="w-16 md:w-32 max-w-full max-h-full" alt="Apple Watch"></td>
                 <td class="px-4 py-2 font-semibold text-gray-900">${product.nombre}</td>
                 <td class="px-4 py-2 font-semibold text-gray-900">${cantidad}</td>
                 <td class="px-4 py-2">${precioFormat}</td>
-                <td class="px-4 py-2"><i class="fa-solid fa-do-not-enter text-2xl text-red-600")"></i>
+                <td class="px-4 py-2"><i class="fa-solid fa-do-not-enter text-2xl text-red-600 cursor-pointer" onclick="eliminarProducto(${idProducto})"></i>
             </tr>
             `
         })
@@ -263,8 +286,34 @@ function agregarProducto(){
     unidadesVendidas.value = ""
 }
 
+function eliminarProducto(id){
+    const productoRow = document.querySelector(`#producto-row-${id}`);
+    const productoItem = document.querySelector(`#producto-item-${id}`);
+    const infoVenta = document.querySelector("#infoVenta");
+    const tBodyInfoProductos = document.querySelector("#tBodyInfoProductos")
+    const tablaProductos = document.querySelector("#infoProductosVenta")
+
+    if(productoRow){
+        productoRow.remove();
+    }
+    if(productoItem){
+        productoItem.remove();
+    }
+    infoVenta.textContent = `El producto se eliminó satisfactoriamente`;
+    infoVenta.classList.add('text-red-600');
+    setTimeout(() => {
+        infoVenta.textContent = "";
+        infoVenta.classList.remove('text-red-600');
+    }, 3000);
+
+    if (tBodyInfoProductos.childElementCount === 0) {
+        tablaProductos.classList.add('hidden');
+    }
+}
 
 
 function agregarVenta(modalId){
     openModal(modalId); 
+    selectCliente.value = "";
+    selectEmpleado.value = "";
 }

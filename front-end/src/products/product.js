@@ -3,6 +3,8 @@ let listProveedores = []
 const gallery = document.querySelector('#gallery')
 const tipoAccion = document.querySelector("#actType")
 
+obtenerProductos();
+cargarProveedores();
 
 
 function action(){
@@ -21,7 +23,6 @@ function action(){
 }
 
 function validacionFormulario(){
-
     if(nombreProducto.value === "" || pIva.value === "" || precioInicial.value === "" || tipoPrenda.value === "" || tallaPrenda.value === "" || colorPrenda.value === "" || stockPrenda.value === "" || descripcionPrenda.value === ""){
         alert("Por favor, completa todos los campos  antes de enviar el formulario.")
     }   
@@ -34,8 +35,6 @@ function validacionFormulario(){
     }
 }
 
-obtenerProductos();
-cargarProveedores();
 
 function cargarProveedores(){
     const selectProveedor = document.querySelector("#selectProveedor");

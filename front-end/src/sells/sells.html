@@ -123,7 +123,7 @@
                                         <div class="flex gap-4 items-center mb-4">
                                             <select class="w-1/2 bg-gray-50 border border-gray-300 text-gray-900 rounded-lg focus:ring-primary-600 focus:border-primary-600 p-2.5" id="selectProducto"></select>
                                             <input type="number" min="1" id="unidadesVendidas" placeholder="Cantidad" class="w-1/5 bg-gray-50 border border-gray-300 text-gray-900 rounded-lg focus:ring-primary-600 focus:border-primary-600 p-2.5">
-                                            <button type="button" onclick="agregarProducto()" class="w-1/6 text-white bg-green-800 hover:bg-green-900 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-lg px-4 py-2"><i class="fa-solid fa-plus-large"></i></button>
+                                            <button type="button" onclick="agregarProducto(event)" class="w-1/6 text-white bg-green-800 hover:bg-green-900 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-lg px-4 py-2"><i class="fa-solid fa-plus-large"></i></button>
                                         </div>
                                         <div class="relative overflow-x-auto shadow-md sm:rounded-lg hidden" id="infoProductosVenta">
                                             <table class="w-full text-sm text-left text-gray-500">
@@ -143,7 +143,7 @@
                                         <p class="mt-1 text-sm text-green-500" id="infoVenta"></p>
                                         </div>
                                 </div>
-                                <button  class="text-white inline-flex items-center bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-lg px-5 py-2.5 text-center" onclick="crearVenta()" >Guardar Cambios</button>
+                                <button  class="text-white inline-flex items-center bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-lg px-5 py-2.5 text-center" onclick="validacionFormulario()" >Guardar Cambios</button>
                             </form>
                             <div id="productosContainer" style="display: none;"></div>
                         </div>
